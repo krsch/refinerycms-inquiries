@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description       = %q{Inquiry handling functionality extracted from Refinery CMS to allow you to have a contact form and manage inquiries in the Refinery backend.}
   s.homepage          = %q{http://refinerycms.com}
   s.email             = %q{info@refinerycms.com}
-  s.authors           = ["Resolve Digital"]
+  s.authors           = ["Resolve Digital", "at8eqeq3"]
   s.require_paths     = %w(lib)
 
   s.files             = [
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   ]
   s.require_path = 'lib'
 
-  s.add_dependency('filters_spam', '~> 0.2')
+  s.add_dependency('aasm', '~> 2.3.1')
 end
 EOF
 

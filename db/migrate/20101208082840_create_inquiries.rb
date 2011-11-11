@@ -4,16 +4,22 @@ class CreateInquiries < ActiveRecord::Migration
       create_table ::Inquiry.table_name, :force => true do |t|
         t.string   "name"
         t.string   "email"
-        t.string   "phone"
         t.text     "message"
-        t.integer  "position"
-        t.boolean  "open",       :default => true
+        t.text     "recipient"
+        t.text     "answer"
+        t.string   "status"
+        t.integer  "inquiry_category_id"
         t.datetime "created_at"
         t.datetime "updated_at"
-        t.boolean  "spam",       :default => false
       end
 
       add_index ::Inquiry.table_name, :id
+    end
+    
+    unless ::InquiryCategory.table_exists?
+      create table ::InquiryCategory.table_name, :force => true do |t|
+        t.string "name"
+      end
     end
 
     ::Page.reset_column_information if defined?(::Page)

@@ -1,2 +1,2 @@
 require 'refinery'
-require 'filters_spam'
+require 'aasm'

@@ -4,7 +4,7 @@ module Refinery
   module Inquiries
     class Engine < Rails::Engine
       config.to_prepare do
-        require 'filters_spam'
+        require 'aasm'
       end
 
       config.after_initialize do
