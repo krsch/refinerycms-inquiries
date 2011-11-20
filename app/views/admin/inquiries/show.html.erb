@@ -3,11 +3,6 @@
   <p>
     <strong><%= t('.age') %>:</strong> <%= time_ago_in_words(@inquiry.created_at) %>
   </p>
-  <% if @inquiry.spam? %>
-    <p>
-      <strong><%= t('.spam') %>:</strong> <%= t('.spam_yes') %>
-    </p>
-  <% end %>
   <h2><%= t('.actions') %></h2>
   <ul>
     <li>
@@ -20,6 +15,12 @@
                   :title => t('admin.inquiries.delete'),
                   :confirm => t('shared.admin.delete.message', :title => @inquiry.name),
                   :method => :delete %>
+    </li>
+    <li>
+      <%= link_to t('admin.inquiries.change_status'),
+                  edit_admin_inquiry_url(@inquiry),
+                  #:class => 'delete_icon no-tooltip confirm-delete',
+                  :title => t('admin.inquiries.change_status') %>
     </li>
   </ul>
 </div>
@@ -42,22 +43,20 @@
         <%= @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => t('.click_to_email')} %>]
       </td>
     </tr>
-    <% unless @inquiry.phone.blank? %>
-      <tr>
-        <td>
-          <strong><%= t('.phone') %></strong>
-        </td>
-        <td>
-          <%= @inquiry.phone %>
-        </td>
-      </tr>
-    <% end %>
     <tr>
       <td>
         <strong><%= t('.date') %></strong>
       </td>
       <td>
         <%= l(Date.parse(@inquiry.created_at.to_s), :format => :long) %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.status') %></strong>
+      </td>
+      <td>
+        <%= @inquiry.status %>
       </td>
     </tr>
     <tr>

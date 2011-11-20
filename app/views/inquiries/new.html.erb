@@ -1,4 +1,4 @@
-<% content_for :body_content_left do %>
+﻿<% content_for :body_content_left do %>
   <div class="inquiries">
     <%=raw @page.content_for(Page.default_parts.first.to_sym) %>
 
@@ -15,10 +15,6 @@
       <div class="field">
         <%= f.required_label :email, :class => 'placeholder-fallback' %>
         <%= f.email_field :email, :class => 'text email', :required => 'required', :placeholder => t('email', :scope => 'activerecord.attributes.inquiry') %>
-      </div>
-      <div class="field">
-        <%= f.label :phone, :class => 'placeholder-fallback' %>
-        <%= f.text_field :phone, :class => 'text phone', :placeholder => t('phone', :scope => 'activerecord.attributes.inquiry') %>
       </div>
       <div class='field message_field'>
         <%= f.required_label :message, :class => 'placeholder-fallback' %>
