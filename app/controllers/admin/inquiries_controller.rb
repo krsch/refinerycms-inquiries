@@ -21,6 +21,12 @@ class Admin::InquiriesController < Admin::BaseController
     @inquiry.updated_at = Time.now
     #if @inquiry.update_attributes(params[:inquiry])
     if @inquiry.save
+      begin
+        InquiryMailer.change_notification(@inquiry, request).deliver
+      rescue
+        logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
+      end
+
       redirect_to admin_inquiry_url(@inquiry)
     else
       logger.warn('could not save')
