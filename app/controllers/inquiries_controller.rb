@@ -14,18 +14,18 @@ class InquiriesController < ApplicationController
     @inquiry = Inquiry.new(params[:inquiry])
 
     if @inquiry.save
-      if @inquiry.ham?
-        begin
-          InquiryMailer.notification(@inquiry, request).deliver
-        rescue
-          logger.warn "There was an error delivering an inquiry notification.\n#{$!}\n"
-        end
+      begin
+        InquiryMailer.notification(@inquiry, request).deliver
+      rescue
+        logger.warn "There was an error delivering an inquiry notification.\n#{$!}\n"
+        logger.warn $!.message
+        logger.warn $!.backtrace
+      end
 
-        begin
-          InquiryMailer.confirmation(@inquiry, request).deliver
-        rescue
-          logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
-        end if InquirySetting.send_confirmation?
+      begin
+        InquiryMailer.confirmation(@inquiry, request).deliver
+      rescue
+        logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
       end
 
       redirect_to thank_you_inquiries_url

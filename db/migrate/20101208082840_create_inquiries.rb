@@ -17,7 +17,7 @@ class CreateInquiries < ActiveRecord::Migration
     end
     
     unless ::InquiryCategory.table_exists?
-      create table ::InquiryCategory.table_name, :force => true do |t|
+      create_table ::InquiryCategory.table_name, :force => true do |t|
         t.string "name"
       end
     end

@@ -5,11 +5,11 @@ class Admin::InquiriesController < Admin::BaseController
 
   before_filter :find_all_ham, :only => [:index]
   before_filter :find_all_spam, :only => [:spam]
-  before_filter :get_spam_count, :only => [:index, :spam]
+  #before_filter :get_spam_count, :only => [:index, :spam]
 
   def index
     @inquiries = @inquiries.with_query(params[:search]) if searching?
-    @inquiries = @inquiries.paginate({:page => params[:page]})
+    @inquiries = @inquiries.paginate({:page => params[:page]}) if @inquiries.any?
   end
 
   def spam
@@ -27,7 +27,7 @@ class Admin::InquiriesController < Admin::BaseController
 protected
 
   def find_all_ham
-    @inquiries = Inquiry.ham
+    @inquiries = Inquiry
   end
 
   def find_all_spam
