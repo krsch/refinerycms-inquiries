@@ -1,0 +1,19 @@
+<div id='records'>
+<%= form_for [:admin, @inquiry] do |f| %>
+  <%= render :partial => '/shared/admin/error_messages',
+             :locals => {
+               :object => @inquiry,
+               :include_object_name => true
+             } %>
+  <div class="field">
+    <%= f.required_label :status, :class => 'placeholder-fallback' %>
+    <%= f.text_field :status, :class => 'text', :required => 'required', :placeholder => t('status', :scope => 'activerecord.attributes.inquiry') %>
+  </div>
+  <%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => true,
+                :delete_title => t('delete', :scope => 'admin.blog.posts.post')
+              } %>
+<% end %>
+</div>
