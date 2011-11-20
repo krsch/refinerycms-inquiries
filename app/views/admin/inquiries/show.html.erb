@@ -16,6 +16,12 @@
                   :confirm => t('shared.admin.delete.message', :title => @inquiry.name),
                   :method => :delete %>
     </li>
+    <li>
+      <%= link_to t('admin.inquiries.change_status'),
+                  edit_admin_inquiry_url(@inquiry),
+                  #:class => 'delete_icon no-tooltip confirm-delete',
+                  :title => t('admin.inquiries.change_status') %>
+    </li>
   </ul>
 </div>
 <div id='records'>
@@ -43,6 +49,14 @@
       </td>
       <td>
         <%= l(Date.parse(@inquiry.created_at.to_s), :format => :long) %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.status') %></strong>
+      </td>
+      <td>
+        <%= @inquiry.status %>
       </td>
     </tr>
     <tr>

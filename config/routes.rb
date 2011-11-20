@@ -10,7 +10,7 @@ Refinery::Application.routes.draw do
   end
 
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    resources :inquiries, :only => [:index, :show, :destroy] do
+    resources :inquiries, :only => [:index, :show, :destroy, :edit, :create] do
       collection do
         get :spam
       end

@@ -11,6 +11,17 @@ class Admin::InquiriesController < Admin::BaseController
     @inquiries = @inquiries.with_query(params[:search]) if searching?
     @inquiries = @inquiries.paginate({:page => params[:page]}) if @inquiries.any?
   end
+  
+  def create
+    @inquiry = Inquiry.new(params[:inquiry])
+    @inquiry.updated_at = Time.now
+    if @inquiry.save
+      redirect_to @inquiry
+    else
+      logger.warn('could not save')
+      render :action => 'edit'
+    end
+  end
 
   def spam
     self.index

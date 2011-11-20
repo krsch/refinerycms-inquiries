@@ -12,6 +12,11 @@ class InquiriesController < ApplicationController
 
   def create
     @inquiry = Inquiry.new(params[:inquiry])
+    @inquiry.status = 'Queued'
+    @inquiry.answer = ''
+    @inquiry.created_at = Time.now
+    @inquiry.updated_at = Time.now
+    @inquiry.recipient = ''
 
     if @inquiry.save
       begin
