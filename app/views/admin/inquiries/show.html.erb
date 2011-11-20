@@ -59,6 +59,16 @@
         <%= @inquiry.status %>
       </td>
     </tr>
+    <% if @inquiry.recipient and not @inquiry.recipient.empty? %>
+    <tr>
+      <td>
+        <strong><%= t('.recipient') %></strong>
+      </td>
+      <td>
+        <%= @inquiry.recipient %>
+      </td>
+    </tr>
+    <% end %>
     <tr>
       <td valign='top'>
         <strong><%= t('.message') %></strong>
@@ -67,5 +77,15 @@
         <%= simple_format strip_tags(@inquiry.message), :style => 'margin-top: 0' %>
       </td>
     </tr>
+    <% if @inquiry.answer and not @inquiry.answer.empty? %>
+    <tr>
+      <td>
+        <strong><%= t('.answer') %></strong>
+      </td>
+      <td>
+        <%= simple_format strip_tags(@inquiry.answer), :style => 'margin-top: 0' %>
+      </td>
+    </tr>
+    <% end %>
   </table>
 </div>

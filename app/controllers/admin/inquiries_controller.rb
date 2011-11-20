@@ -12,11 +12,16 @@ class Admin::InquiriesController < Admin::BaseController
     @inquiries = @inquiries.paginate({:page => params[:page]}) if @inquiries.any?
   end
   
-  def create
-    @inquiry = Inquiry.new(params[:inquiry])
+  def update
+    #@inquiry = Inquiry.new(params[:inquiry])
+    #@inquiry.updated_at = Time.now
+    @inquiry.status = params[:inquiry][:status]
+    @inquiry.answer = params[:inquiry][:answer]
+    @inquiry.recipient = params[:inquiry][:recipient]
     @inquiry.updated_at = Time.now
+    #if @inquiry.update_attributes(params[:inquiry])
     if @inquiry.save
-      redirect_to @inquiry
+      redirect_to admin_inquiry_url(@inquiry)
     else
       logger.warn('could not save')
       render :action => 'edit'
