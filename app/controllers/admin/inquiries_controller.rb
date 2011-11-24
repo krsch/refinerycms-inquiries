@@ -18,6 +18,8 @@ class Admin::InquiriesController < Admin::BaseController
     @inquiry.status = params[:inquiry][:status]
     @inquiry.answer = params[:inquiry][:answer]
     @inquiry.recipient = params[:inquiry][:recipient]
+    @inquiry.isapproved = params[:inquiry][:isapproved]
+    @inquiry.isclosed = params[:inquiry][:isclosed]
     @inquiry.updated_at = Time.now
     #if @inquiry.update_attributes(params[:inquiry])
     if @inquiry.save

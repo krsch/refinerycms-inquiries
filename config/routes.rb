@@ -1,7 +1,8 @@
 Refinery::Application.routes.draw do
   get '/contact', :to => 'inquiries#new', :as => 'new_inquiry'
+  get '/questions', :to => 'inquiries#index', :as => 'list_inquiries'
   resources :contact,
-            :only => :create,
+            :only => [:create, :show],
             :as => :inquiries,
             :controller => 'inquiries' do
     collection do

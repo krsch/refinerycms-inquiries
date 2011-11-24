@@ -13,6 +13,14 @@
     <%= f.required_label :recipient, :class => 'placeholder-fallback' %>
     <%= f.text_field :recipient, :class => 'text', :placeholder => t('recipient', :scope => 'activerecord.attributes.inquiry') %>
   </div>
+  <div class="field">
+	  <%= f.check_box :isapproved %>
+      <%= f.label :isapproved, t('.approve'), :class => "stripped" %>
+  </div>
+  <div class="field">
+	  <%= f.check_box :isclosed %>
+      <%= f.label :isclosed, t('.isclosed'), :class => "stripped" %>
+  </div>
   <div class='field message_field'>
     <%= f.required_label :answer, :class => 'placeholder-fallback' %>
     <%= f.text_area :answer, :rows => 8, :placeholder => t('answer', :scope => 'activerecord.attributes.inquiry') %>
