@@ -16,6 +16,10 @@
         <%= f.required_label :email, :class => 'placeholder-fallback' %>
         <%= f.email_field :email, :class => 'text email', :required => 'required', :placeholder => t('email', :scope => 'activerecord.attributes.inquiry') %>
       </div>
+	  <div class="field">
+		  <%= f.check_box :isprivate %>
+	      <%= f.label :isprivate, t('.private'), :class => "stripped" %>
+	  </div>
       <div class='field message_field'>
         <%= f.required_label :message, :class => 'placeholder-fallback' %>
         <%= f.text_area :message, :rows => 8, :required => 'required', :placeholder => t('message', :scope => 'activerecord.attributes.inquiry') %>

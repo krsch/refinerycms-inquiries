@@ -1,0 +1,15 @@
+<div id='actions'>
+    <% if @inquiries.any? -%>
+      <%= will_paginate @inquiries %>
+      <% @inquiries.each do |inquiry| %>
+        <ul>
+          <%= render :partial => 'inquiry', :object => inquiry %>
+        </ul>
+      <% end %>
+      <%= will_paginate @inquiries %>
+    <% else -%>
+      <p>
+        <strong><%= t(".no_inquiries") %></strong>
+      </p>
+    <% end -%>
+</div>

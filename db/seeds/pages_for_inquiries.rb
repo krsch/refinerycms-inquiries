@@ -8,6 +8,13 @@ end if defined?(::User)
 if defined?(::Page)
   page_position = (::Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)
 
+  questions_page = ::Page.create({
+    :title => "Questions",
+    :link_url => "/questions",
+    :deletable => true,
+    :position => (page_position += 1)
+  })
+
   contact_us_page = ::Page.create({
     :title => "Contact",
     :link_url => "/contact",

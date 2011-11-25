@@ -7,6 +7,18 @@ ru:
     new:
       send: Отправить сообщение
       privacy_policy: Мы относимся с уважением к вашим личным данным
+    show:
+      details: Подробности
+      age: Срок
+      actions: Действия
+      back_to_all_inquiries: Назад ко всем запросам
+      spam: Спам
+      spam_yes: да
+      inquiry: Запрос
+      to: Кому
+      from: От
+      date: Дата
+      message: Сообщение
   admin:
     inquiries:
       delete: Удалить этот запрос навсегда

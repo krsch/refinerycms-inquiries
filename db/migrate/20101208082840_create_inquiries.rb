@@ -8,6 +8,9 @@ class CreateInquiries < ActiveRecord::Migration
         t.text     "recipient"
         t.text     "answer"
         t.string   "status"
+        t.boolean  "isprivate"
+        t.boolean  "isapproved"
+        t.boolean  "isclosed"
         t.integer  "inquiry_category_id"
         t.datetime "created_at"
         t.datetime "updated_at"
@@ -31,7 +34,7 @@ class CreateInquiries < ActiveRecord::Migration
      drop_table ::Inquiry.table_name
 
      ::Page.delete_all({
-       :link_url => ("/contact" || "/contact/thank_you")
+       :link_url => ("/contact" || "/contact/thank_you" || "/questions")
      }) if defined?(::Page)
   end
 end
