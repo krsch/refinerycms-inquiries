@@ -32,6 +32,7 @@ ru:
         spam: Спам
         update_notified: Изменить получателей уведомлений
         edit_confirmation_email: Редактировать письмо-подтверждение
+        change_status: Изменить статус
       index:
         no_inquiries: "Вы еще не получили ни одного запроса."
         no_spam: "Ура, спама нет!"
@@ -49,6 +50,11 @@ ru:
         phone: Телефон
         date: Дата
         message: Сообщение
+        status: Статус
+        flags: Флаги
+      edit:
+        approve: Утвердить
+        close: Закрыть
     inquiry_settings:
       notification_recipients_form:
         inquiry_settings_value_name: Отправлять уведомления
@@ -85,3 +91,6 @@ ru:
         email: Эл. почта
         phone: Телефон
         message: Сообщение
+        status: Статус
+        recipient: Получатель
+        answer: Ответ
