@@ -15,11 +15,12 @@ class Admin::InquiriesController < Admin::BaseController
   def update
     #@inquiry = Inquiry.new(params[:inquiry])
     #@inquiry.updated_at = Time.now
-    @inquiry.status = params[:inquiry][:status]
+    #@inquiry.status = params[:inquiry][:status]
+    @inquiry.isapproved = params[:inquiry][:status].to_i > 0
+    @inquiry.isclosed = params[:inquiry][:status].to_i > 1
+    @inquiry.inquiry_category_id = params[:inquiry][:inquiry_category_id]
     @inquiry.answer = params[:inquiry][:answer]
     @inquiry.recipient = params[:inquiry][:recipient]
-    @inquiry.isapproved = params[:inquiry][:isapproved]
-    @inquiry.isclosed = params[:inquiry][:isclosed]
     @inquiry.updated_at = Time.now
     #if @inquiry.update_attributes(params[:inquiry])
     if @inquiry.save

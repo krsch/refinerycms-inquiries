@@ -7,19 +7,17 @@
              } %>
   <div class="field">
     <%= f.required_label :status, :class => 'placeholder-fallback' %>
-    <%= f.text_field :status, :class => 'text', :required => 'required', :placeholder => t('status', :scope => 'activerecord.attributes.inquiry') %>
+    <%= f.select :status, [
+        [t('new', :scope => 'activerecord.attributes.inquiry'), 0],
+	[t('processing', :scope => 'activerecord.attributes.inquiry'), 1],
+	[t('finished', :scope => 'activerecord.attributes.inquiry'), 2]] %> 
   </div>
+  <div class=field>
+    <%= f.required_label :inquiry_category_id, :class => 'placeholder-fallback' %>
+    <%= f.collection_select :inquiry_category_id, InquiryCategory.all, :id, :name %> 
   <div class="field">
     <%= f.required_label :recipient, :class => 'placeholder-fallback' %>
     <%= f.text_field :recipient, :class => 'text', :placeholder => t('recipient', :scope => 'activerecord.attributes.inquiry') %>
-  </div>
-  <div class="field">
-	  <%= f.check_box :isapproved %>
-      <%= f.label :isapproved, t('.approve'), :class => "stripped" %>
-  </div>
-  <div class="field">
-	  <%= f.check_box :isclosed %>
-      <%= f.label :isclosed, t('.close'), :class => "stripped" %>
   </div>
   <div class='field message_field'>
     <%= f.required_label :answer, :class => 'placeholder-fallback' %>

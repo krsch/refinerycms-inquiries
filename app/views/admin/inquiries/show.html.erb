@@ -56,9 +56,23 @@
         <strong><%= t('.status') %></strong>
       </td>
       <td>
-        <%= @inquiry.status %>
+      <% if @inquiry.isclosed
+      	   status = t('.closed')
+	 elsif @inquiry.isapproved
+	   status = t('.approved', :recipient => @inquiry.recipient)
+	 else 
+	   status = t('.isnew', :recipient => @inquiry.recipient)
+	 end%>
+      <%= status %>
       </td>
     </tr>
+    <tr>
+      <td>
+        <strong><%= t('inquiry_category') %></strong>
+      </td>
+      <td>
+      <%= @inquiry.inquiry_category.name %>
+      </td> 
     <tr>
       <td>
         <strong><%= t('.flags') %></strong>
