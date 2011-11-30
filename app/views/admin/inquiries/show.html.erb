@@ -71,7 +71,7 @@
         <strong><%= t('inquiry_category') %></strong>
       </td>
       <td>
-      <%= @inquiry.inquiry_category.name %>
+      <%= @inquiry.inquiry_category.name if @inquiry.inquiry_category %>
       </td> 
     <tr>
       <td>

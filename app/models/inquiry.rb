@@ -8,7 +8,7 @@ class Inquiry < ActiveRecord::Base
 
   default_scope :order => 'created_at DESC' # previously scope :newest
 
-  attr_accessible :name, :message, :email, :isprivate
+  attr_accessible :name, :message, :email, :isprivate, :inquiry_category_id
   attr_accessible :status, :answer, :recipient, :as => :admin
   
   belongs_to :inquiry_category

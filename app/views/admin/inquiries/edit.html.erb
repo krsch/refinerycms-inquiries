@@ -12,9 +12,10 @@
 	[t('processing', :scope => 'activerecord.attributes.inquiry'), 1],
 	[t('finished', :scope => 'activerecord.attributes.inquiry'), 2]] %> 
   </div>
-  <div class=field>
+  <div class="field">
     <%= f.required_label :inquiry_category_id, :class => 'placeholder-fallback' %>
     <%= f.collection_select :inquiry_category_id, InquiryCategory.all, :id, :name %> 
+  </div>
   <div class="field">
     <%= f.required_label :recipient, :class => 'placeholder-fallback' %>
     <%= f.text_field :recipient, :class => 'text', :placeholder => t('recipient', :scope => 'activerecord.attributes.inquiry') %>
