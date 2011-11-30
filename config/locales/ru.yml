@@ -54,7 +54,7 @@ ru:
         status: Статус
         flags: Флаги
       edit:
-        approve: Утвердить
+        approve: Опубликовать
         close: Закрыть
     inquiry_settings:
       notification_recipients_form:
