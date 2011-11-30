@@ -1,0 +1,23 @@
+<div id='records'>
+<% @inquiry_categories.each do |inquiry_category| %>
+  <%= render :partial => 'inquiry_category', :object => inquiry_category %>
+<% end %>
+
+<%= form_for [:admin, @inquiry_category] do |f| %>
+  <%= render :partial => '/shared/admin/error_messages',
+             :locals => {
+	       :object => @inquiry_category,
+	       :include_object_name => true
+             } %>
+  <div class="field">
+    <%= f.required_label :name, :class => 'placeholder-fallback' %>
+    <%= f.text_field :name, :class => 'text', :required => 'required', :placeholder => t('name', :scope => 'activerecord.attributes.inquiry_category') %>
+  </div>
+  <%= render :partial => "/shared/admin/form_actions",
+           :locals => {
+	     :f => f,
+	     :continue_editing => false
+	   } %>
+<% end %>
+</div>
+

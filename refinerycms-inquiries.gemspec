@@ -93,6 +93,7 @@ Gem::Specification.new do |s|
     'app/controllers',
     'app/controllers/admin',
     'app/controllers/admin/inquiry_settings_controller.rb',
+    'app/controllers/admin/inquiry_categories_controller.rb',
     'app/controllers/admin/inquiries_controller.rb',
     'app/controllers/inquiries_controller.rb',
     'app/helpers',

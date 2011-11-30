@@ -20,5 +20,6 @@ Refinery::Application.routes.draw do
       end
     end
     resources :inquiry_settings, :only => [:edit, :update]
+    resources :inquiry_categories, :only => [:index, :create]
   end
 end
