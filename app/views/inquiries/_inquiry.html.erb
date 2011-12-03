@@ -1,6 +1,12 @@
 <li>
-  <span class='title'>
-    <%= link_to inquiry.name, inquiry_url(inquiry) %> <%= t('.said') %>
-    <span class="preview"><%= truncate(strip_tags(inquiry.message), :length => 60) -%></span>
+  <span class='question'>
+    <strong><%= t('.question') %></strong>
+    <span class='text'><%=strip_tags(inquiry.message) %></span>
+    <div class='from'><%= t('.from', :name => inquiry.name, :date => l(Date.parse(inquiry.created_at.to_s), :format => :long)) %></div>
+  </span>
+  <span class='answer'>
+    <strong><%= t('.answer') %></strong>
+    <span class='text'><%= strip_tags(inquiry.answer) %></span>
+    <div class='from'><%= t('.answered_by', :name => inquiry.recipient, :date => l(Date.parse(inquiry.updated_at.to_s), :format => :long)) %></div>
   </span>
 </li>

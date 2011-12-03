@@ -2,3 +2,15 @@
 {
   overflow:auto;
 }
+
+.question .from, .answer .from
+{
+	font-size:0.7em;
+	text-align: right;
+	color: gray;
+}
+
+#questions ul
+{
+	list-style-type: none;
+}

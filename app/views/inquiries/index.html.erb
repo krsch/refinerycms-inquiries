@@ -1,4 +1,6 @@
-<div id='actions'>
+<% content_for :stylesheets do stylesheet_link_tag('inquiries') end%>
+<% content_for :body_content_left do %>
+<div id='questions'>
     <% if @inquiries.any? -%>
       <%= will_paginate @inquiries %>
       <% @inquiries.each do |inquiry| %>
@@ -13,3 +15,5 @@
       </p>
     <% end -%>
 </div>
+<% end %>
+<%= render :partial => '/shared/content_page' %>

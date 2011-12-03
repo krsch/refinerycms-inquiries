@@ -4,6 +4,11 @@ ru:
       title: Запросы
       description: Предоставляет форму обратной связи и хранит запросы
   inquiries:
+    inquiry:
+      question: "Вопрос:"
+      from: от %{name} за %{date}
+      answer: "Ответ:"
+      answered_by: Ответ дал %{name} %{date}
     new:
       send: Отправить сообщение
       privacy_policy: Мы относимся с уважением к вашим личным данным
