@@ -27,6 +27,7 @@ ru:
   admin:
     inquiries:
       delete: Удалить этот запрос навсегда
+      change_status: Изменить статус запроса
       inquiry:
         read_inquiry: Прочитать запрос
         said: пишет
@@ -57,6 +58,8 @@ ru:
         message: Сообщение
         status: Статус
         flags: Флаги
+        isnew: Новый
+        inquiry_category: Категория запроса
       edit:
         approve: Опубликовать
         close: Закрыть
@@ -103,4 +106,7 @@ ru:
         status: Статус
         recipient: Получатель
         answer: Ответ
-        inquiry_category_id: Категория вопроса
+        inquiry_category_id: Категория запроса
+        isnew: Новый
+        processing: Обрабатывается
+        finished: Опубликован

@@ -29,14 +29,6 @@
   <table id='inquiry'>
     <tr>
       <td>
-        <strong><%= t('.to') %></strong>
-      </td>
-      <td>
-        <%= RefinerySetting[:site_name] %>
-      </td>
-    </tr>
-    <tr>
-      <td>
         <strong><%= t('.from') %></strong>
       </td>
       <td>
@@ -57,34 +49,22 @@
       </td>
       <td>
       <% if @inquiry.isclosed
-      	   status = t('.closed')
+      	   status = t('closed', :scope => 'activerecord.attributes.inquiry')
 	 elsif @inquiry.isapproved
-	   status = t('.approved', :recipient => @inquiry.recipient)
+	   status = t('approved', :recipient => @inquiry.recipient, :scope => 'activerecord.attributes.inquiry')
 	 else 
-	   status = t('.isnew', :recipient => @inquiry.recipient)
+	   status = t('isnew', :recipient => @inquiry.recipient, :scope => 'activerecord.attributes.inquiry')
 	 end%>
       <%= status %>
       </td>
     </tr>
     <tr>
       <td>
-        <strong><%= t('inquiry_category') %></strong>
+        <strong><%= t('.inquiry_category') %></strong>
       </td>
       <td>
       <%= @inquiry.inquiry_category.name if @inquiry.inquiry_category %>
       </td> 
-    <tr>
-      <td>
-        <strong><%= t('.flags') %></strong>
-      </td>
-      <td>
-		  <% a = []
-		  	a.push(t('.private')) if @inquiry.isprivate 
-		  	a.push(t('.approved')) if @inquiry.isapproved
-		    a.push(t('.closed')) if @inquiry.isclosed
-		  %>
-		  <%= a.join(', ') %>
-      </td>
     </tr>
     <% if @inquiry.recipient and not @inquiry.recipient.empty? %>
     <tr>

@@ -8,7 +8,7 @@
   <div class="field">
     <%= f.required_label :status, :class => 'placeholder-fallback' %>
     <%= f.select :status, [
-        [t('new', :scope => 'activerecord.attributes.inquiry'), 0],
+        [t('isnew', :scope => 'activerecord.attributes.inquiry'), 0],
 	[t('processing', :scope => 'activerecord.attributes.inquiry'), 1],
 	[t('finished', :scope => 'activerecord.attributes.inquiry'), 2]] %> 
   </div>
