@@ -3,14 +3,6 @@
   <table id='inquiry'>
     <tr>
       <td>
-        <strong><%= t('.to') %></strong>
-      </td>
-      <td>
-        <%= RefinerySetting[:site_name] %>
-      </td>
-    </tr>
-    <tr>
-      <td>
         <strong><%= t('.from') %></strong>
       </td>
       <td>
@@ -26,37 +18,6 @@
       </td>
     </tr>
     <tr>
-      <td>
-        <strong><%= t('.status') %></strong>
-      </td>
-      <td>
-        <%= @inquiry.status %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <strong><%= t('.flags') %></strong>
-      </td>
-      <td>
-		  <% a = []
-		  	a.push(t('.private')) if @inquiry.isprivate 
-		  	a.push(t('.approved')) if @inquiry.isapproved
-		    a.push(t('.closed')) if @inquiry.isclosed
-		  %>
-		  <%= a.join(', ') %>
-      </td>
-    </tr>
-    <% if @inquiry.recipient and not @inquiry.recipient.empty? %>
-    <tr>
-      <td>
-        <strong><%= t('.recipient') %></strong>
-      </td>
-      <td>
-        <%= @inquiry.recipient %>
-      </td>
-    </tr>
-    <% end %>
-    <tr>
       <td valign='top'>
         <strong><%= t('.message') %></strong>
       </td>
@@ -64,7 +25,6 @@
         <%= simple_format strip_tags(@inquiry.message), :style => 'margin-top: 0' %>
       </td>
     </tr>
-    <% if @inquiry.answer and not @inquiry.answer.empty? %>
     <tr>
       <td>
         <strong><%= t('.answer') %></strong>
@@ -73,6 +33,13 @@
         <%= simple_format strip_tags(@inquiry.answer), :style => 'margin-top: 0' %>
       </td>
     </tr>
-    <% end %>
+    <tr>
+      <td>
+        <strong><%= t('.answered_by') %></strong>
+      </td>
+      <td>
+        <%= @inquiry.recipient %>, <%= l(Date.parse(@inquiry.created_at.to_s), :format => :long) %>
+      </td>
+    </tr>
   </table>
 </div>

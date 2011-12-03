@@ -7,7 +7,8 @@ ru:
     new:
       send: Отправить сообщение
       privacy_policy: Мы относимся с уважением к вашим личным данным
-      private: Личное
+      private: Личный
+      inquiry_category_id: Категория вопроса
     show:
       details: Подробности
       age: Срок
@@ -20,6 +21,9 @@ ru:
       from: От
       date: Дата
       message: Сообщение
+      answered_by: Ответ подготовил
+      answer: Ответ
+      inquiry_category_id: Катагория вопроса
   admin:
     inquiries:
       delete: Удалить этот запрос навсегда
@@ -56,6 +60,10 @@ ru:
       edit:
         approve: Опубликовать
         close: Закрыть
+    inquiry_categories:
+      index:
+        name: Название
+        inquiry_category_id: Категория
     inquiry_settings:
       notification_recipients_form:
         inquiry_settings_value_name: Отправлять уведомления
@@ -95,3 +103,4 @@ ru:
         status: Статус
         recipient: Получатель
         answer: Ответ
+        inquiry_category_id: Категория вопроса

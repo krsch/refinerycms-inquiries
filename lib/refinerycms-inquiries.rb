@@ -3,6 +3,10 @@ require File.expand_path('../inquiries', __FILE__)
 module Refinery
   module Inquiries
     class Engine < Rails::Engine
+      initializer "static assets" do |app|
+        app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
+      end
+
       config.to_prepare do
         require 'aasm'
       end

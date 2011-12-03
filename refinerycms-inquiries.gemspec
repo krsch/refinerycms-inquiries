@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description       = %q{Inquiry handling functionality extracted from Refinery CMS to allow you to have a contact form and manage inquiries in the Refinery backend.}
   s.homepage          = %q{http://refinerycms.com}
   s.email             = %q{info@refinerycms.com}
-  s.authors           = ["Resolve Digital", "at8eqeq3"]
+  s.authors           = ["Resolve Digital", "at8eqeq3", "krsch"]
   s.require_paths     = %w(lib)
 
   s.files             = [
@@ -97,7 +97,8 @@ Gem::Specification.new do |s|
     'app/controllers/admin/inquiries_controller.rb',
     'app/controllers/inquiries_controller.rb',
     'app/helpers',
-    'app/helpers/inquiries_helper.rb'
+    'app/helpers/inquiries_helper.rb',
+    'public/stylesheets/inquiries.css'
   ]
   s.require_path = 'lib'
 

@@ -1,4 +1,7 @@
-﻿<% content_for :body_content_left do %>
+﻿<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'inquiries' %>
+<% end %>
+<% content_for :body_content_left do %>
   <div class="inquiries">
     <%=raw @page.content_for(Page.default_parts.first.to_sym) %>
 
@@ -16,13 +19,13 @@
         <%= f.required_label :email, :class => 'placeholder-fallback' %>
         <%= f.email_field :email, :class => 'text email', :required => 'required', :placeholder => t('email', :scope => 'activerecord.attributes.inquiry') %>
       </div>
-	  <div class="field">
-		  <%= f.check_box :isprivate %>
-	      <%= f.label :isprivate, t('.private'), :class => "stripped" %>
-	  </div>
       <div class="field">
 	<%= f.required_label :inquiry_category_id, :class => 'placeholder-fallback' %>
 	<%= f.collection_select :inquiry_category_id, InquiryCategory.all, :id, :name %> 
+      </div>
+      <div class="field">
+	  <%= f.label :isprivate, t('.private'), :class => "stripped" %>
+          <%= f.check_box :isprivate %>
       </div>
       <div class='field message_field'>
         <%= f.required_label :message, :class => 'placeholder-fallback' %>
