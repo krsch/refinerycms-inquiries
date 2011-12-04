@@ -1,5 +1,6 @@
-<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+<li class='clearfix record <%= cycle("on", "on-hover") %> <%= 'private' if inquiry.isprivate %>' >
   <span class='title'>
+    <%= t('.private') if inquiry.isprivate %>
     <%= link_to inquiry.name, admin_inquiry_url(inquiry) %> <%= t('.said') %>
     <span class="preview"><%= truncate(strip_tags(inquiry.message), :length => 60) -%></span>
   </span>

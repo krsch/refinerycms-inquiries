@@ -9,8 +9,8 @@
     <%= f.required_label :status, :class => 'placeholder-fallback' %>
     <%= f.select :status, [
         [t('isnew', :scope => 'activerecord.attributes.inquiry'), 0],
-	[t('processing', :scope => 'activerecord.attributes.inquiry'), 1],
-	[t('finished', :scope => 'activerecord.attributes.inquiry'), 2]] %> 
+	[t('approved', :scope => 'activerecord.attributes.inquiry'), 1],
+	[t('closed', :scope => 'activerecord.attributes.inquiry'), 2]] %> 
   </div>
   <div class="field">
     <%= f.required_label :inquiry_category_id, :class => 'placeholder-fallback' %>

@@ -6,7 +6,7 @@ ru:
   inquiries:
     inquiry:
       question: "Вопрос:"
-      from: от %{name} за %{date}
+      from: Вопрос задал %{name} %{date}
       answer: "Ответ:"
       answered_by: Ответ дал %{name} %{date}
     new:
@@ -38,6 +38,7 @@ ru:
         said: пишет
         mark_as_spam: Пометить как спам
         mark_as_ham: Переместить во входящие
+        private: "/личный/"
       submenu:
         inbox: Входящие
         spam: Спам
@@ -130,3 +131,4 @@ ru:
         isnew: Новый
         approved: Обрабатывается
         closed: Опубликован
+        private: Личный

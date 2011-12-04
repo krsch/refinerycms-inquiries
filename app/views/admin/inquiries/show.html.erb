@@ -56,6 +56,7 @@
 	   status = t('isnew', :recipient => @inquiry.recipient, :scope => 'activerecord.attributes.inquiry')
 	 end%>
       <%= status %>
+      <%= ', ' + t('private', :scope => 'activerecord.attributes.inquiry') if @inquiry.isprivate %>
       </td>
     </tr>
     <tr>
