@@ -7,6 +7,7 @@
                } %>
     <%= hidden_field_tag :isclosed, true %>
     <%= hidden_field_tag :isapproved, true %>
+    <%= hidden_field_tag :isprivate, false %>
     <div class="field">
       <%= f.required_label :name, :class => 'placeholder-fallback' %>
       <%= f.text_field :name, :class => 'text', :required => 'required', :placeholder => t('name', :scope => 'activerecord.attributes.inquiry') %>

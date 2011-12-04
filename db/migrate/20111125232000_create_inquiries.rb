@@ -8,9 +8,9 @@ class CreateInquiries < ActiveRecord::Migration
         t.text     "recipient"
         t.text     "answer"
         t.string   "status"
-        t.boolean  "isprivate"
-        t.boolean  "isapproved"
-        t.boolean  "isclosed"
+        t.boolean  "isprivate" :null => false
+        t.boolean  "isapproved" :null => false
+        t.boolean  "isclosed" :null => false
         t.integer  "inquiry_category_id"
         t.datetime "created_at"
         t.datetime "updated_at"
