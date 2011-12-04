@@ -28,9 +28,11 @@ class InquiriesController < ApplicationController
       end
 
       begin
-        InquiryMailer.change_notification(@inquiry, :new, request).deliver
+        InquiryMailer.change_notification(@inquiry, request, 'inquiry_notification_new_email').deliver
       rescue
         logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
+        logger.warn $!.message
+        logger.warn $!.backtrace
       end
 
       redirect_to thank_you_inquiries_url

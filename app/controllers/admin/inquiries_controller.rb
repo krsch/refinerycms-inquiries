@@ -36,14 +36,14 @@ class Admin::InquiriesController < Admin::BaseController
     if @inquiry.save
       if recipient_added
         begin
-          InquiryMailer.change_notification(@inquiry, 'inquiry_notification_recipient_email', request).deliver
+          InquiryMailer.change_notification(@inquiry, request, 'inquiry_notification_recipient_email').deliver
         rescue
           logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
         end
       end
       if answer_added
         begin
-          InquiryMailer.change_notification(@inquiry, 'inquiry_notification_answer_email', request).deliver
+          InquiryMailer.change_notification(@inquiry, request, 'inquiry_notification_answer_email').deliver
         rescue
           logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
         end

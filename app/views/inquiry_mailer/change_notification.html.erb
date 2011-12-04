@@ -1,1 +1,1 @@
-<%= RefinerySetting.find( (@reason + '_body_' + Globalize.locale).to_sym ).gsub('%name%',@inquiry.name).gsub('%recipient%', @inquiry.recipient).gsub('%answer%', @inquiry.answer) %>
+<%= RefinerySetting.find_by_name(@reason + '_body_' + Globalize.locale.to_s ).value.gsub('%name%',@inquiry.name).gsub('%recipient%', @inquiry.recipient).gsub('%answer%', @inquiry.answer) %>

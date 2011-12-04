@@ -18,7 +18,7 @@ class InquiryMailer < ActionMailer::Base
   end
   
   def change_notification(inquiry, request, reason)
-    subject     RefinerySetting.find( (@reason + '_subject_' + Globalize.locale).to_sym )
+    subject     RefinerySetting.find_by_name(reason + '_subject_' + Globalize.locale.to_s).value
     recipients  inquiry.email
     from        "\"#{RefinerySetting[:site_name]}\" <no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}>"
     reply_to    InquirySetting.notification_recipients.split(',').first
