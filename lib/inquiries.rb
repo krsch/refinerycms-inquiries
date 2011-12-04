@@ -1,2 +1,1 @@
 require 'refinery'
-require 'aasm'

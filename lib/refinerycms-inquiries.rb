@@ -8,7 +8,6 @@ module Refinery
       end
 
       config.to_prepare do
-        require 'aasm'
       end
 
       config.after_initialize do

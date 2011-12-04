@@ -101,6 +101,4 @@ Gem::Specification.new do |s|
     'public/stylesheets/inquiries.css'
   ]
   s.require_path = 'lib'
-
-  s.add_dependency('aasm', '~> 2.3.1')
 end

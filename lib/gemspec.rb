@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
   ]
   s.require_path = 'lib'
 
-  s.add_dependency('aasm', '~> 2.3.1')
 end
 EOF
 
