@@ -28,7 +28,7 @@ class InquiriesController < ApplicationController
       end
 
       begin
-        InquiryMailer.confirmation(@inquiry, request).deliver
+        InquiryMailer.change_notification(@inquiry, :new, request).deliver
       rescue
         logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
       end

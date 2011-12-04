@@ -7,13 +7,33 @@
       <%= link_to t('.inbox'), admin_inquiries_url, :class => "email_icon" %>
     </li>
     <li>
+      <%= link_to t('.add'),
+                  new_admin_inquiry_url,
+                  :class => "add_icon" %>
+    </li>
+    <li>
       <%= link_to t('.update_notified'),
                     edit_admin_inquiry_setting_url(:inquiry_notification_recipients, :dialog => true, :height => 300),
                     :class => "user_comment_icon" %>
     </li>
-    <li>
-      <%= link_to t('.edit_confirmation_email'),
+<!--    <li>
+      <%#= link_to t('.edit_confirmation_email'),
                   edit_admin_inquiry_setting_url(:inquiry_confirmation_body, :dialog => true),
+                  :class => "edit_email_icon" %>
+    </li>-->
+    <li>
+      <%= link_to t('.edit_notification_new_email'),
+                  edit_admin_inquiry_setting_url(:inquiry_notification_new_email, :dialog => true),
+                  :class => "edit_email_icon" %>
+    </li>
+    <li>
+      <%= link_to t('.edit_notification_recipient_email'),
+                  edit_admin_inquiry_setting_url(:inquiry_notification_recipient_email, :dialog => true),
+                  :class => "edit_email_icon" %>
+    </li>
+    <li>
+      <%= link_to t('.edit_notification_answer_email'),
+                  edit_admin_inquiry_setting_url(:inquiry_notification_answer_email, :dialog => true),
                   :class => "edit_email_icon" %>
     </li>
   </ul>

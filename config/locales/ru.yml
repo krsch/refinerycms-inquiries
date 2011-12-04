@@ -43,7 +43,11 @@ ru:
         spam: Спам
         update_notified: Изменить получателей уведомлений
         edit_confirmation_email: Редактировать письмо-подтверждение
+        edit_notification_new_email: Редактировать уведомление о принятии запроса в обработку
+        edit_notification_recipient_email: Редактировать уведомление о назначении ответственного
+        edit_notification_answer_email: Редактировать письмо с ответом на запрос
         change_status: Изменить статус
+        add: Добавить
       index:
         no_inquiries: "Вы еще не получили ни одного запроса."
         no_spam: "Ура, спама нет!"
@@ -62,9 +66,10 @@ ru:
         date: Дата
         message: Сообщение
         status: Статус
-        flags: Флаги
         isnew: Новый
         inquiry_category: Категория запроса
+        created_at: Получен
+        updated_at: Ответ получен
       edit:
         approve: Опубликовать
         close: Закрыть
@@ -87,6 +92,16 @@ ru:
         the_customer_making_inquiry: "Клиент, делающий запрос"
         message: Сообщение
         note: "Примечание. Поместите текст %name% там, где вы хотите, чтобы появилось имя клиента."
+      notification_email_form:
+        inquiry_notification_answer_email:
+          note: "Примечание. %name% будет заменено на имя клиента, %recipient% - на имя ответственного за ответ, %answer% - на текст ответа"
+          explanation: "Когда вы добавляете ответ на запрос, клинету автоматически отправляется письмо с тестом ответа"
+        inquiry_notification_new_email:
+          note: "Примечание. %name% будет заменено на имя клиента"
+          explanation: "Когда клиент отправляет запрос, ему отправляется уведомление о отм, что запрос получен."
+        inquiry_notification_recipient_email:
+          note: "Примечание. %name% будет заменено на имя клиента, %recipient% - на имя ответственного за ответ"
+          explanation: "Когда вы добавляете ответственного за обработку запрос, клинету автоматически отправляется письмо с именем отвественного."
   inquiry_mailer:
     notification:
       greeting: Здравствуйте
@@ -109,9 +124,9 @@ ru:
         phone: Телефон
         message: Сообщение
         status: Статус
-        recipient: Получатель
+        recipient: Ответственный
         answer: Ответ
         inquiry_category_id: Категория запроса
         isnew: Новый
-        processing: Обрабатывается
-        finished: Опубликован
+        approved: Обрабатывается
+        closed: Опубликован

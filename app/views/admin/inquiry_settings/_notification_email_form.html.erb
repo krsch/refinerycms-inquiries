@@ -1,0 +1,59 @@
+<%#= form_for([:admin, @body_setting], :url => (@url_override || @url)) do |f| %>
+<%= form_tag admin_inquiry_setting_path(@id), :method => :put do %>
+  <%#= hidden_field_tag :id, @id %>
+  <p>
+    <%= t(".#{@id}.explanation") %>
+  </p>
+  <p>
+    <%= t('below_edit_email_sent', :scope => 'admin.inquiry_settings.confirmation_email_form' ) %>
+  </p>
+  <table id='inquiry'>
+    <tr>
+      <td>
+        <label class='stripped'><%= t('to', :scope => 'admin.inquiry_settings.confirmation_email_form' ) %></label>
+      </td>
+      <td>
+        <%= t('the_customer_making_inquiry', :scope => 'admin.inquiry_settings.confirmation_email_form') %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class='stripped'><%= t('from', :scope => 'admin.inquiry_settings.confirmation_email_form') %></label>
+      </td>
+      <td>
+        <%= "#{RefinerySetting[:site_name]} &lt;no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}&gt;".html_safe %>
+      </td>
+    </tr>
+    <% (RefinerySetting.get("i18n_translation_frontend_locales", :scoping => 'refinery')||[I18n.locale]).each do |locale| %>
+      <tr>
+        <td>
+          <label class='stripped'><%= t('subject', :scope => 'admin.inquiry_settings.confirmation_email_form' ) %> (<%= locale.to_s %>)</label>
+        </td>
+        <td>
+          <%= text_field_tag "subject_n[#{locale.to_s}]", @subject_setting,
+                             :class => 'widest' %>
+        </td>
+      </tr>
+      <tr>
+        <td valign='top'>
+          <%= label_tag :value, t('message', :scope => 'admin.inquiry_settings.confirmation_email_form' ),
+                      :class => 'stripped' %> (<%= locale.to_s %>)
+        </td>
+        <td>
+          <%= text_area_tag "body_n[#{locale.to_s}]",  @body_setting, # required, we can't use :value
+                          :rows => "5",
+                          :class => 'widest' %>
+          <br/>
+          <em><%= t(".#{@id}.note") %></em>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :continue_editing => false,
+               :cancel_url => admin_inquiries_url,
+               :hide_delete => true
+             } %>
+<% end %>

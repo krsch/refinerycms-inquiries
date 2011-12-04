@@ -10,6 +10,20 @@ class Admin::InquirySettingsController < Admin::BaseController
   after_filter :save_message_for_confirmation?, :only => :update
   around_filter :rewrite_flash?, :only => :update
 
+  def update
+    if /^inquiry_notification_(.*)_email/ =~ params[:id]
+      body_name = params[:id] + '_body'
+      subject_name = params[:id] + '_subject'
+      params[:body_n].each do |locale, value|
+        RefinerySetting.set( (body_name + '_' + locale).to_sym, value)
+      end
+      params[:subject_n].each do |locale, value|
+        RefinerySetting.set( (subject_name + '_' + locale).to_sym, value)
+      end
+    end
+    render :text => "<script>parent.window.location = '#{admin_inquiries_url}';</script>"
+  end
+
 protected
   def rewrite_flash?
     yield
@@ -38,11 +52,21 @@ protected
     rescue
     end
 
-    # prime the setting first, if it's valid.
-    if InquirySetting.methods.map(&:to_sym).include?(params[:id].to_s.gsub('inquiry_', '').to_sym)
-      InquirySetting.send(params[:id].to_s.gsub('inquiry_', '').to_sym)
+    if /^inquiry_notification_.*_email/ =~ params[:id]
+      @body = params[:id] + "_body_#{locale}"
+      @id = params[:id]
+      @subject = params[:id] + "_subject_#{locale}"
+      @body_setting = RefinerySetting.find_or_set(@body.to_sym, '')
+      @subject_setting = RefinerySetting.find_or_set(@subject.to_sym, '')
+    else
+
+      # prime the setting first, if it's valid.
+      if InquirySetting.methods.map(&:to_sym).include?(params[:id].to_s.gsub('inquiry_', '').to_sym)
+        InquirySetting.send(params[:id].to_s.gsub('inquiry_', '').to_sym)
+      end
+      @refinery_setting = RefinerySetting.find_by_name(params[:id])
     end
-    @refinery_setting = RefinerySetting.find_by_name(params[:id])
+
   end
 
 end
