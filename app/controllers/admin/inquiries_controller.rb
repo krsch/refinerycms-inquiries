@@ -16,6 +16,16 @@ class Admin::InquiriesController < Admin::BaseController
     #@inquiry = Inquiry.new(params[:inquiry])
     #@inquiry.updated_at = Time.now
     #@inquiry.status = params[:inquiry][:status]
+    if @inquiry.recipient.empty? and not params[:inquiry][:recipient].empty?
+      recipient_added = true
+    else
+      recipient_added = false
+    end
+    if @inquiry.answer.empty? and not params[:inquiry][:answer].empty?
+      answer_added = true
+    else
+      answer_added = false
+    end
     @inquiry.isapproved = params[:inquiry][:status].to_i > 0
     @inquiry.isclosed = params[:inquiry][:status].to_i > 1
     @inquiry.inquiry_category_id = params[:inquiry][:inquiry_category_id]
@@ -24,10 +34,19 @@ class Admin::InquiriesController < Admin::BaseController
     @inquiry.updated_at = Time.now
     #if @inquiry.update_attributes(params[:inquiry])
     if @inquiry.save
-      begin
-        InquiryMailer.change_notification(@inquiry, request).deliver
-      rescue
-        logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
+      if recipient_added
+        begin
+          InquiryMailer.change_notification(@inquiry, 'inquiry_notification_recipient_email', request).deliver
+        rescue
+          logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
+        end
+      end
+      if answer_added
+        begin
+          InquiryMailer.change_notification(@inquiry, 'inquiry_notification_answer_email', request).deliver
+        rescue
+          logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
+        end
       end
 
       redirect_to admin_inquiry_url(@inquiry)
