@@ -9,6 +9,7 @@ Refinery::Application.routes.draw do
       get :thank_you
     end
   end
+  match '/questions/:inquiry_category_id' => 'inquiries#index', :as => 'list_category'
 
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     resources :inquiries, :only => [:index, :show, :destroy, :edit, :update, :new, :create] do

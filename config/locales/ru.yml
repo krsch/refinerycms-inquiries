@@ -6,6 +6,8 @@ ru:
   inquiries:
     index:
       no_inquiries: Вопросов пока не поступало.
+      select_category: Выбрать категорию.
+      all: Все
     inquiry:
       question: "Вопрос:"
       from: Вопрос задал %{name} %{date}

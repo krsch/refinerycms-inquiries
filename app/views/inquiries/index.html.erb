@@ -1,5 +1,11 @@
 <% content_for :stylesheets do stylesheet_link_tag('inquiries') end%>
 <% content_for :body_content_left do %>
+<div id='categories'>
+<%= form_tag list_inquiries_path, :method => :get do %>
+  <%= select_tag :inquiry_category_id, options_from_collection_for_select(@categories, :id, :name, @category) + options_for_select([[t('.all'), 0]], @category) %>
+  <%= submit_tag t('.select_category') %>
+<% end %>
+</div> 
 <div id='questions'>
     <% if @inquiries.any? -%>
       <%= will_paginate @inquiries %>

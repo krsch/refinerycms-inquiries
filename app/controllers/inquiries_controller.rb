@@ -43,8 +43,15 @@ class InquiriesController < ApplicationController
   
   def index
 #    @page = Page.find_by_link_url("/contact/thank_you", :include => [:parts, :slugs])
-    @inquiries = Inquiry.where(:isprivate => false, :isclosed => true).paginate(:page => params[:page])
-#    @inquiries = Inquiry.where(:isprivate => nil)
+    if params[:inquiry_category_id] and params[:inquiry_category_id].to_i > 0
+      @inquiries = Inquiry.where(:isprivate => false, :isclosed => true, :inquiry_category_id => params[:inquiry_category_id]).paginate(:page => params[:page])
+      @category = params[:inquiry_category_id].to_i
+    else
+      @inquiries = Inquiry.where(:isprivate => false, :isclosed => true).paginate(:page => params[:page])
+      @category = 0
+    end
+    @categories = InquiryCategory.all;
+    #    @inquiries = Inquiry.where(:isprivate => nil)
   end
   
   def show
