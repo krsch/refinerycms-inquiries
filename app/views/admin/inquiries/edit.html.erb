@@ -10,7 +10,7 @@
     <%= f.select :status, [
         [t('isnew', :scope => 'activerecord.attributes.inquiry'), 0],
 	[t('approved', :scope => 'activerecord.attributes.inquiry'), 1],
-	[t('closed', :scope => 'activerecord.attributes.inquiry'), 2]] %> 
+	[t('closed', :scope => 'activerecord.attributes.inquiry'), 2]], :selected => @inquiry.status %>
   </div>
   <div class="field">
     <%= f.required_label :inquiry_category_id, :class => 'placeholder-fallback' %>
@@ -27,7 +27,7 @@
   <%= render :partial => "/shared/admin/form_actions",
               :locals => {
                 :f => f,
-                :continue_editing => true
+                :continue_editing => false
               } %>
 <% end %>
 </div>

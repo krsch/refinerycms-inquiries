@@ -4,6 +4,8 @@ ru:
       title: Запросы
       description: Предоставляет форму обратной связи и хранит запросы
   inquiries:
+    index:
+      no_inquiries: Вопросов пока не поступало.
     inquiry:
       question: "Вопрос:"
       from: Вопрос задал %{name} %{date}

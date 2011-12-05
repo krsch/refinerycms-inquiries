@@ -6,6 +6,7 @@ class Admin::InquiriesController < Admin::BaseController
   before_filter :find_all_ham, :only => [:index]
   before_filter :find_all_spam, :only => [:spam]
   #before_filter :get_spam_count, :only => [:index, :spam]
+  before_filter :add_status, :only => [:edit]
 
   def index
     @inquiries = @inquiries.with_query(params[:search]) if searching?
@@ -16,12 +17,12 @@ class Admin::InquiriesController < Admin::BaseController
     #@inquiry = Inquiry.new(params[:inquiry])
     #@inquiry.updated_at = Time.now
     #@inquiry.status = params[:inquiry][:status]
-    if @inquiry.recipient.empty? and not params[:inquiry][:recipient].empty?
+    if params[:inquiry][:status].to_i > 0 and not @inquiry.isapproved
       recipient_added = true
     else
       recipient_added = false
     end
-    if @inquiry.answer.empty? and not params[:inquiry][:answer].empty?
+    if params[:inquiry][:status].to_i > 1 and not @inquiry.isclosed
       answer_added = true
     else
       answer_added = false
@@ -72,6 +73,16 @@ protected
 
   def find_all_ham
     @inquiries = Inquiry
+  end
+
+  def add_status
+    if @inquiry.isclosed
+      @inquiry.status = 2;
+    elsif @inquiry.isapproved
+      @inquiry.status = 1;
+    else
+      @inquiry.status = 0;
+    end
   end
 
   def find_all_spam
