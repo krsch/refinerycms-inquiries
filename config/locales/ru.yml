@@ -6,7 +6,7 @@ ru:
   inquiries:
     index:
       no_inquiries: Вопросов пока не поступало.
-      select_category: Выбрать категорию.
+      select_category: Выбрать категорию
       all: Все
     inquiry:
       question: "Вопрос:"

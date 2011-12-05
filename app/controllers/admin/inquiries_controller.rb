@@ -4,8 +4,6 @@ class Admin::InquiriesController < Admin::BaseController
   helper_method :group_by_date
 
   before_filter :find_all_ham, :only => [:index]
-  before_filter :find_all_spam, :only => [:spam]
-  #before_filter :get_spam_count, :only => [:index, :spam]
   before_filter :add_status, :only => [:edit]
 
   def index
@@ -84,13 +82,4 @@ protected
       @inquiry.status = 0;
     end
   end
-
-  def find_all_spam
-    @inquiries = Inquiry.spam
-  end
-
-  def get_spam_count
-    @spam_count = Inquiry.count(:conditions => {:spam => true})
-  end
-
 end
