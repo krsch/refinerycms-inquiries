@@ -9,11 +9,13 @@
 <div id='questions'>
     <% if @inquiries.any? -%>
       <%= will_paginate @inquiries %>
+      <ul>
       <% @inquiries.each do |inquiry| %>
-        <ul>
+        <li>
           <%= render :partial => 'inquiry', :object => inquiry %>
-        </ul>
+        </li>
       <% end %>
+      </ul>
       <%= will_paginate @inquiries %>
     <% else -%>
       <p>
