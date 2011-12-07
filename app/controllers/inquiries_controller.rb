@@ -47,7 +47,7 @@ class InquiriesController < ApplicationController
       @inquiries = Inquiry.where(:isprivate => false, :isclosed => true, :inquiry_category_id => params[:inquiry_category_id]).paginate(:page => params[:page])
       @category = params[:inquiry_category_id].to_i
     else
-      @inquiries = Inquiry.where("(isprivate is NULL or isprivate != 't') and isclosed == 't'").paginate(:page => params[:page], :per_page => 5)
+      @inquiries = Inquiry.where(:isprivate => false, :isclosed => true).paginate(:page => params[:page], :per_page => 5)
       @category = 0
     end
     @categories = InquiryCategory.all;
