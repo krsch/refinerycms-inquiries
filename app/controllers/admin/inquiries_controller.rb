@@ -5,6 +5,7 @@ class Admin::InquiriesController < Admin::BaseController
 
   before_filter :find_all_ham, :only => [:index]
   before_filter :add_status, :only => [:edit]
+  before_filter :set_status, :only => [:create]
 
   def index
     @inquiries = @inquiries.with_query(params[:search]) if searching?
@@ -81,5 +82,11 @@ protected
     else
       @inquiry.status = 0;
     end
+  end
+
+  def set_status
+    params[:inquiry][:isprivate] = false
+    params[:inquiry][:isapproved] = true
+    params[:inquiry][:isclosed] = true
   end
 end

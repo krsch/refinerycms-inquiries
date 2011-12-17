@@ -14,3 +14,13 @@
 {
 	list-style-type: none;
 }
+
+div.pagination
+{
+	text-align:center;
+}
+
+#questions ul li
+{
+	margin-bottom: 2.5em;
+}

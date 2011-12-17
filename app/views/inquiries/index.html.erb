@@ -8,7 +8,7 @@
 </div> 
 <div id='questions'>
     <% if @inquiries.any? -%>
-      <%= will_paginate @inquiries %>
+      <%#= will_paginate @inquiries %>
       <ul>
       <% @inquiries.each do |inquiry| %>
         <li>
