@@ -20,10 +20,30 @@
     <%= f.required_label :recipient, :class => 'placeholder-fallback' %>
     <%= f.text_field :recipient, :class => 'text', :placeholder => t('recipient', :scope => 'activerecord.attributes.inquiry') %>
   </div>
-  <div class='field message_field'>
-    <%= f.required_label :answer, :class => 'placeholder-fallback' %>
-    <%= f.text_area :answer, :rows => 8, :placeholder => t('answer', :scope => 'activerecord.attributes.inquiry') %>
-  </div>
+  <!--<div class='field'>
+    <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+      <ul id='page_parts'>
+        <% [:answer, :message].each_with_index do |part, part_index| %>
+          <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
+            <%= link_to part.to_s.titleize, "##{part}" %>
+          </li>
+        <% end %>
+      </ul>
+
+      <div id='page_part_editors'>
+        <% [:answer, :message].each do |part| %>
+          <div class='page_part' id='<%= part %>'>
+            <%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>--> 
+
+  <%= render :partial => "/shared/admin/tabbed_fields",
+           :locals => { :f => f,
+                        :tabbed_fields => [:answer, :message] } %>
+
   <%= render :partial => "/shared/admin/form_actions",
               :locals => {
                 :f => f,
@@ -31,3 +51,14 @@
               } %>
 <% end %>
 </div>
+
+<% content_for :stylesheets do %>
+<!-- Bugfix for refinerycms style -->
+<style>
+#message.page_part 
+{
+  padding: 0;
+  margin-bottom: 0;
+}
+</style>
+<% end %>
