@@ -30,7 +30,7 @@ class Admin::InquiriesController < Admin::BaseController
     @inquiry.isclosed = params[:inquiry][:status].to_i > 1
     @inquiry.inquiry_category_id = params[:inquiry][:inquiry_category_id]
     @inquiry.answer = params[:inquiry][:answer]
-    @inquiry.message = params[:inquiry][:message]
+    @inquiry.message = params[:inquiry][:message] || params[:inquiry][:question]
     @inquiry.recipient = params[:inquiry][:recipient]
     @inquiry.updated_at = Time.now
     #if @inquiry.update_attributes(params[:inquiry])

@@ -4,6 +4,8 @@ class Inquiry < ActiveRecord::Base
   validates :message, :presence => true
   validates :email, :format=> { :with =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 
+  alias_attribute :question, :message
+
   acts_as_indexed :fields => [:name, :email, :message]
 
   default_scope :order => 'created_at DESC' # previously scope :newest

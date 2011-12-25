@@ -45,12 +45,13 @@ class InquiriesController < ApplicationController
 #    @page = Page.find_by_link_url("/contact/thank_you", :include => [:parts, :slugs])
     if params[:inquiry_category_id] and params[:inquiry_category_id].to_i > 0
       @inquiries = Inquiry.where(:isprivate => false, :isclosed => true, :inquiry_category_id => params[:inquiry_category_id]).paginate(:page => params[:page])
-      @category = params[:inquiry_category_id].to_i
+      @category = list_category_path(params[:inquiry_category_id].to_i)
     else
       @inquiries = Inquiry.where(:isprivate => false, :isclosed => true).paginate(:page => params[:page], :per_page => 5)
-      @category = 0
+      @category = list_inquiries_path
     end
     @categories = InquiryCategory.all;
+    @categories.each {|c| c[:url] = list_category_path(c.id)}
     #    @inquiries = Inquiry.where(:isprivate => nil)
   end
   
