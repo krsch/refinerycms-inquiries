@@ -1,4 +1,13 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %> <%= 'private' if inquiry.isprivate %>' >
+  <span class='icon'>
+    <%= if inquiry.isclosed
+          refinery_icon_tag 'tick.png'
+        elsif inquiry.isapproved
+          refinery_icon_tag 'exclamation.png'
+        else
+         refinery_icon_tag 'faq_16.png'
+     end %>
+  </span>
   <span class='title'>
     <%= t('.private') if inquiry.isprivate %>
     <%= link_to inquiry.name, admin_inquiry_url(inquiry) %> <%= t('.said') %>

@@ -98,7 +98,9 @@ Gem::Specification.new do |s|
     'app/controllers/inquiries_controller.rb',
     'app/helpers',
     'app/helpers/inquiries_helper.rb',
-    'public/stylesheets/inquiries.css'
+    'public/stylesheets/inquiries.css',
+    'public/images/refinery/icons/exclamation.png',
+    'public/images/refinery/icons/faq_16.png'
   ]
   s.require_path = 'lib'
 end
