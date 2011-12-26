@@ -24,3 +24,9 @@ div.pagination
 {
 	margin-bottom: 2.5em;
 }
+
+#inquiry p
+{
+	word-wrap: break-word;
+	word-break: break-all;
+}
