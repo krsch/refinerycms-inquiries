@@ -20,8 +20,15 @@ class Admin::InquirySettingsController < Admin::BaseController
       params[:subject_n].each do |locale, value|
         RefinerySetting.set( (subject_name + '_' + locale).to_sym, value)
       end
+      render :text => "<script>parent.window.location = '#{admin_inquiries_url}';</script>"
+    else
+      setting = RefinerySetting.find_by_name(params[:id])
+      if setting.update_attributes(params[:refinery_setting])
+        render :text => "<script>parent.window.location = '#{admin_inquiries_url}';</script>"
+      else
+        render :edit
+      end
     end
-    render :text => "<script>parent.window.location = '#{admin_inquiries_url}';</script>"
   end
 
 protected
