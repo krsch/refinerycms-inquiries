@@ -1,0 +1,27 @@
+%table.inquiry
+  %tr
+    %td{:width=>'200px'}=t('from', :scope => 'activerecord.attributes.inquiry')
+    %td=export_inquiry.name + ' <' + export_inquiry.email + '>'
+  %tr
+    %td=t('created_at', :scope => 'activerecord.attributes.inquiry')
+    %td=l(export_inquiry.created_at, :format => :long)
+  %tr
+    %td=t('status', :scope => 'activerecord.attributes.inquiry')
+    %td=t(export_inquiry.inquiry_status, :scope => 'activerecord.attributes.inquiry')
+  %tr
+    %td=t('inquiry_category_id', :scope => 'activerecord.attributes.inquiry')
+    %td=export_inquiry.inquiry_category.name
+  -if export_inquiry.isapproved
+    %tr
+      %td=t('recipient', :scope => 'activerecord.attributes.inquiry')
+      %td=export_inquiry.recipient
+  %tr
+    %td=t('message', :scope => 'activerecord.attributes.inquiry')
+    %td=export_inquiry.message
+  -if export_inquiry.isclosed
+    %tr
+      %td=t('updated_at',:scope => 'activerecord.attributes.inquiry')
+      %td=l export_inquiry.updated_at, :format => :long
+    %tr
+      %td=t('answer', :scope => 'activerecord.attributes.inquiry')
+      %td=export_inquiry.answer

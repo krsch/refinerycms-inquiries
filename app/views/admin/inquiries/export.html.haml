@@ -1,0 +1,30 @@
+%html
+  %head
+    =stylesheet_link_tag 'export'
+  %body
+    %h1
+      %center<
+        Вопросы
+        %br/
+        =if @inquiry_category
+          Категории =@inquiry_category
+        поступившие на официальный сайт администрации сельского поселения "Мосрентген"
+        =if @start_date
+          за период с #{@start_date} по #{@end_date}
+    Общее число вопросов: #{@inquiries.count}
+    %br/
+    Число вопросов, на которые дан ответ: #{@inquiries.where(:isclosed => true).count}
+    %br/
+    Число вопросов, находящихся в работе: #{@inquiries.where(:isclosed => false, :isapproved => true).count}
+    %br/
+    Число не принятых в обработку вопросов: #{@inquiries.where(:isapproved => [false,nil]).count}
+    -@categories.each do |cat|
+      -if @inquiries.where(:inquiry_category_id => cat.id).count > 0
+        %h2 Категория #{cat.name}
+        -inquiries_cat = @inquiries.where(:inquiry_category_id => cat.id)
+        -Inquiry::STATUSES.each do |status|
+          -inquiries_status = inquiries_cat.where_status(status)
+          -if inquiries_status.count > 0
+            %h3=t('.' + status)
+            =render :partial => 'export_inquiry', :collection => inquiries_status
+

@@ -53,6 +53,7 @@ ru:
         edit_notification_answer_email: Редактировать письмо с ответом на запрос
         change_status: Изменить статус
         add: Добавить
+        export: Экспорт
       index:
         no_inquiries: "Вы еще не получили ни одного запроса."
         no_spam: "Ура, спама нет!"
@@ -78,6 +79,15 @@ ru:
       edit:
         approve: Опубликовать
         close: Закрыть
+      export:
+        new: Вопросы, не принятые в обработку
+        approved: Вопросы, находящиеся в обработке
+        closed: Вопросы, на которые дан ответ
+      new_export:
+        submit: Экспорт
+        cancel: Отмена
+      status_panel:
+        all: Все
     inquiry_categories:
       index:
         name: Название
@@ -126,6 +136,7 @@ ru:
       inquiry:
         name: Имя
         email: Эл. почта
+        from: От
         phone: Телефон
         message: Сообщение
         status: Статус
@@ -133,6 +144,9 @@ ru:
         answer: Ответ
         inquiry_category_id: Категория запроса
         isnew: Новый
+        new: Новый
         approved: Обрабатывается
         closed: Опубликован
         private: Личный
+        created_at: Получен
+        updated_at: Ответ получен

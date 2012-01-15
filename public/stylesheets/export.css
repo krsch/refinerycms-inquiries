@@ -1,0 +1,9 @@
+table.inquiry, table.inquiry th, table.inquiry td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.inquiry
+{
+  width: 100%;
+}

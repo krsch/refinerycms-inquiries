@@ -8,6 +8,8 @@ Gem::Specification.new do |s|
   s.email             = %q{info@refinerycms.com}
   s.authors           = ["Resolve Digital", "at8eqeq3", "krsch"]
   s.require_paths     = %w(lib)
+  s.add_dependency('haml-rails')
+  s.add_dependency('haml')
 
   s.files             = [
     'db',
@@ -82,6 +84,7 @@ Gem::Specification.new do |s|
     'app/views/admin/inquiry_settings/edit.html.erb',
     'app/views/admin/inquiries',
     'app/views/admin/inquiries/show.html.erb',
+    'app/views/admin/inquiries/export.html.haml',
     'app/views/admin/inquiries/_inquiry.html.erb',
     'app/views/admin/inquiries/_submenu.html.erb',
     'app/views/admin/inquiries/index.html.erb',

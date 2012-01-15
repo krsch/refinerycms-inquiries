@@ -8,19 +8,18 @@
     </li>
     <li>
       <%= link_to t('.add'),
-                  new_admin_inquiry_url,
+                  new_admin_inquiry_path,
                   :class => "add_icon" %>
+    </li>
+    <li>
+      <%= link_to t('.export'),
+                newexport_admin_inquiries_path(@status) %>
     </li>
     <li>
       <%= link_to t('.update_notified'),
                     edit_admin_inquiry_setting_url(:inquiry_notification_recipients, :dialog => true, :height => 300),
                     :class => "user_comment_icon" %>
     </li>
-<!--    <li>
-      <%#= link_to t('.edit_confirmation_email'),
-                  edit_admin_inquiry_setting_url(:inquiry_confirmation_body, :dialog => true),
-                  :class => "edit_email_icon" %>
-    </li>-->
     <li>
       <%= link_to t('.edit_notification_new_email'),
                   edit_admin_inquiry_setting_url(:inquiry_notification_new_email, :dialog => true),

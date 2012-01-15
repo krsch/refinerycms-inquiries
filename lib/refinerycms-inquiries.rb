@@ -1,4 +1,5 @@
 require File.expand_path('../inquiries', __FILE__)
+require 'haml'
 
 module Refinery
   module Inquiries

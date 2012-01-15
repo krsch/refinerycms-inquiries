@@ -1,0 +1,4 @@
+%ul#status_panel
+  %li.status{:class => @status?'':'selected'}=link_to t('.all'), admin_inquiries_path
+  - Inquiry::STATUSES.each do |status|
+    %li.status{:class => (@status==status)?'selected':''}=link_to t(status, :scope => 'activerecord.attributes.inquiry'), status_admin_inquiries_path(status)

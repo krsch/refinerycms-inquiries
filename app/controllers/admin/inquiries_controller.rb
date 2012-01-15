@@ -9,9 +9,11 @@ class Admin::InquiriesController < Admin::BaseController
 
   def index
     @inquiries = @inquiries.with_query(params[:search]) if searching?
+    @inquiries = @inquiries.where_status(params[:status]) if params[:status]
+    @status = params[:status] if params[:status]
     @inquiries = @inquiries.paginate({:page => params[:page]}) if @inquiries.any?
   end
-  
+
   def update
     #@inquiry = Inquiry.new(params[:inquiry])
     #@inquiry.updated_at = Time.now
@@ -55,6 +57,18 @@ class Admin::InquiriesController < Admin::BaseController
       logger.warn('could not save')
       render :action => 'edit'
     end
+  end
+
+  def export
+    #@inquiry = Inquiry.find(params[:id])
+    @inquiries = Inquiry
+    @inquiries = @inquiries.where_status(params[:status]) if params[:status]
+    @categories = InquiryCategory.find(params[:category])
+    render :layout => false
+  end
+
+  def new_export
+    @status = params[:status]
   end
 
   def spam

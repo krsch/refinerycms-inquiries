@@ -1,0 +1,8 @@
+=form_tag export_admin_inquiries_path do
+  -InquiryCategory.all.each do |cat|
+    %div.category
+      =check_box_tag "category[]", cat.id
+      =cat.name
+  =hidden_field_tag 'status', @status if @status
+  =submit_tag t('.submit')
+  =link_to t('.cancel'), :back, :class => 'close_dialog button'

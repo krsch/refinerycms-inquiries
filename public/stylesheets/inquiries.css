@@ -30,3 +30,38 @@ div.pagination
 	word-wrap: break-word;
 	word-break: break-all;
 }
+
+ul#status_panel
+{
+  display:              inline;
+  list-style-image:     none;
+  list-style-position:  outside;
+  list-style-type:      none;
+}
+
+ul#status_panel li 
+{
+  display: inline;
+}
+
+ul#status_panel li a
+{
+  display:              inline;
+  list-style:           none;
+  background-color:     #dbedff;
+  background-position:  12px;
+  background-repeat:    no-repeat;
+  border:               1px solid #65C3F7;
+  padding:              9px 12px 9px 9px;
+}
+
+ul#status_panel li.selected a
+{
+  background-color:     #22A7F2;
+  color:                white;
+}
+
+ul#status_panel li a:hover
+{
+  background-color:     #cae7fb;
+}

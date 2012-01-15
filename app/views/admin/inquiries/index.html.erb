@@ -1,4 +1,5 @@
 <%= render :partial => "submenu" %>
+<%= content_for :stylesheets do stylesheet_link_tag 'inquiries' end %>
 <div id='records'>
   <% if searching? %>
     <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
@@ -13,6 +14,7 @@
     <% end %>
   <% else %>
     <% if @inquiries.any? -%>
+      <%=render :partial => 'status_panel'%>
       <%= will_paginate @inquiries %>
       <% group_by_date(@inquiries).each do |container| %>
         <h3><%= l((inquiry_group = container.last).first.created_at, :format => :short) %></h3>

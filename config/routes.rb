@@ -14,10 +14,9 @@ Refinery::Application.routes.draw do
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     resources :inquiries, :only => [:index, :show, :destroy, :edit, :update, :new, :create] do
       collection do
-        get :spam
-      end
-      member do
-        get :toggle_spam
+	get 'export(/:status)', :action => 'new_export', :as => 'newexport'
+	post :export
+	get 'status/:status', :action => 'index', :as => 'status'
       end
     end
     resources :inquiry_settings, :only => [:edit, :update]

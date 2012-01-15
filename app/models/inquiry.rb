@@ -15,8 +15,44 @@ class Inquiry < ActiveRecord::Base
   
   belongs_to :inquiry_category
 
+  STATUSES = ['new', 'approved', 'closed']
+
   def self.latest(number = 7)
     limit(number)
   end
 
+  def self.where_status(stat)
+    if stat == 'new'
+        where(:isclosed => false, :isapproved => false)
+    elsif stat == 'approved'
+        where(:isclosed => false, :isapproved => true)
+    elsif stat == 'closed'
+        where(:isclosed => true, :isapproved => true)
+    end
+  end
+
+  #class << self
+    def inquiry_status()
+      if self.isclosed
+        'closed'
+      elsif self.isapproved
+        'approved'
+      else
+        'new'
+      end
+    end
+
+    def inquiry_status=(stat)
+      if stat == 'new'
+        self.isclosed = false
+        self.isapproved = false
+      elsif stat == 'approved'
+        self.isclosed = false
+        self.isapproved = true
+      elsif stat == 'closed'
+        self.isclosed = true
+        self.isapproved = true
+      end
+    end
+  #end
 end
