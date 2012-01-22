@@ -24,4 +24,4 @@
       %td=l export_inquiry.updated_at, :format => :long
     %tr
       %td=t('answer', :scope => 'activerecord.attributes.inquiry')
-      %td=export_inquiry.answer
+      %td=export_inquiry.answer.html_safe
