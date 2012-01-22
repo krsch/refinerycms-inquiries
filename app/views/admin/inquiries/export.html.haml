@@ -11,17 +11,17 @@
         поступившие на официальный сайт администрации сельского поселения "Мосрентген"
         =if @start_date
           за период с #{@start_date} по #{@end_date}
-    Общее число вопросов: #{@inquiries.count}
-    %br/
-    Число вопросов, на которые дан ответ: #{@inquiries.where(:isclosed => true).count}
-    %br/
-    Число вопросов, находящихся в работе: #{@inquiries.where(:isclosed => false, :isapproved => true).count}
-    %br/
-    Число не принятых в обработку вопросов: #{@inquiries.where(:isapproved => [false,nil]).count}
     -@categories.each do |cat|
-      -if @inquiries.where(:inquiry_category_id => cat.id).count > 0
+      -inquiries_cat = @inquiries.where(:inquiry_category_id => cat.id)
+      -if inquiries_cat.count > 0
         %h2 Категория #{cat.name}
-        -inquiries_cat = @inquiries.where(:inquiry_category_id => cat.id)
+        Общее число вопросов: #{inquiries_cat.count}
+        %br/
+        Число вопросов, на которые дан ответ: #{inquiries_cat.where(:isclosed => true).count}
+        %br/
+        Число вопросов, находящихся в работе: #{inquiries_cat.where(:isclosed => false, :isapproved => true).count}
+        %br/
+        Число не принятых в обработку вопросов: #{inquiries_cat.where(:isapproved => [false,nil]).count}
         -Inquiry::STATUSES.each do |status|
           -inquiries_status = inquiries_cat.where_status(status)
           -if inquiries_status.count > 0

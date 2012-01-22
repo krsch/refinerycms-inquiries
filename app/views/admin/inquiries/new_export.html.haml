@@ -1,4 +1,9 @@
+-content_for :stylesheets do
+  =javascript_include_tag :defaults
 =form_tag export_admin_inquiries_path do
+  %div#check_all
+    =check_box_tag "all", 1
+    Все
   -InquiryCategory.all.each do |cat|
     %div.category
       =check_box_tag "category[]", cat.id
@@ -6,3 +11,8 @@
   =hidden_field_tag 'status', @status if @status
   =submit_tag t('.submit')
   =link_to t('.cancel'), :back, :class => 'close_dialog button'
+:javascript
+  $('#check_all input').click(function () {
+    var state = this.checked;
+    $('.category input').each( function(index, value) { value.checked = state } );
+  })

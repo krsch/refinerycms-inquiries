@@ -6,4 +6,5 @@ table.inquiry, table.inquiry th, table.inquiry td {
 table.inquiry
 {
   width: 100%;
+  margin: 40px 20px 0 0;
 }
