@@ -18,7 +18,7 @@ module Refinery
           plugin.directory = "inquiries"
           plugin.menu_match = /(refinery|admin)\/inquir(ies|y_settings|y_categories)$/
           plugin.activity = {
-            :class => InquirySetting,
+            :class => Inquiry,
             :title => 'name'
           }
         end
