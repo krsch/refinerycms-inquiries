@@ -11,6 +11,13 @@
         поступившие на официальный сайт администрации сельского поселения "Мосрентген"
         =if @start_date
           за период с #{@start_date} по #{@end_date}
+    %h3
+      Общее число вопросов: #{@inquiries.count}
+      %br/
+      Число вопросов, на которые дан ответ: #{@inquiries.where(:isclosed => true).count}
+      %br/
+      Число вопросов, находящихся в работе: #{@inquiries.where(:isclosed => false, :isapproved => true).count}
+      %br/
     -@categories.each do |cat|
       -inquiries_cat = @inquiries.where(:inquiry_category_id => cat.id)
       -if inquiries_cat.count > 0
