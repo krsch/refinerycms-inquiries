@@ -64,11 +64,20 @@ class Admin::InquiriesController < Admin::BaseController
     @inquiries = Inquiry
     @inquiries = @inquiries.where_status(params[:status]) if params[:status]
     @categories = InquiryCategory.find(params[:category])
+    start_date = Date.civil(params[:date]["from(1i)"].to_i,
+                            params[:date]["from(2i)"].to_i,
+                            params[:date]["from(3i)"].to_i)
+    @inquiries = @inquiries.where('created_at > ?', start_date)
+    end_date = Date.civil(params[:date]["to(1i)"].to_i,
+                            params[:date]["to(2i)"].to_i,
+                            params[:date]["to(3i)"].to_i)
+    @inquiries = @inquiries.where('created_at < ?', end_date)
     render :layout => false
   end
 
   def new_export
     @status = params[:status]
+    @first_date = Inquiry.unscoped.order('created_at ASC').select(:created_at).first.created_at
   end
 
   def spam

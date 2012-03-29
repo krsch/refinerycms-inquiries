@@ -9,6 +9,12 @@
       =check_box_tag "category[]", cat.id
       =cat.name
   =hidden_field_tag 'status', @status if @status
+  #date-from
+    С
+    =date_select "date", "from", :end_year => Time.now.year, :default => @first_date
+  #date-to
+    По
+    =date_select "date", "to", :end_year => Time.now.year
   =submit_tag t('.submit')
   =link_to t('.cancel'), :back, :class => 'close_dialog button'
 :javascript
