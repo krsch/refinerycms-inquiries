@@ -19,6 +19,7 @@
       %br/
       Число вопросов, находящихся в работе: #{@inquiries.where(:isclosed => false, :isapproved => true).count}
       %br/
+      Число не принятых в обработку вопросов: #{@inquiries.where(:isapproved => [false,nil]).count}
     -@categories.each do |cat|
       -inquiries_cat = @inquiries.where(:inquiry_category_id => cat.id)
       -if inquiries_cat.count > 0
