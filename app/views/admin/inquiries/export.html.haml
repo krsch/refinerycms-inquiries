@@ -6,10 +6,11 @@
       %center<
         Вопросы
         %br/
-        =if @inquiry_category
-          Категории =@inquiry_category
+        -if @inquiry_category
+          Категории
+          =@inquiry_category
         поступившие на официальный сайт администрации сельского поселения "Мосрентген"
-        =if @start_date
+        -if @start_date
           за период с #{@start_date} по #{@end_date}
     %h3
       Общее число вопросов: #{@inquiries.count}
