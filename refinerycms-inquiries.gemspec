@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-inquiries}
-  s.version           = %q{1.0.1}
+  s.version           = %q{1.0.2}
   s.date              = %q{2011-11-25}
   s.summary           = %q{Inquiry handling functionality for the Refinery CMS project.}
   s.description       = %q{Inquiry handling functionality extracted from Refinery CMS to allow you to have a contact form and manage inquiries in the Refinery backend.}
@@ -91,8 +91,6 @@ Gem::Specification.new do |s|
     'app/views/admin/inquiries/edit.html.erb',
     'app/views/inquiry_mailer',
     'app/views/inquiry_mailer/notification.text.erb',
-    'app/views/inquiry_mailer/confirmation.text.erb',
-    'app/views/inquiry_mailer/change_notification.text.erb',
     'app/controllers',
     'app/controllers/admin',
     'app/controllers/admin/inquiry_settings_controller.rb',
