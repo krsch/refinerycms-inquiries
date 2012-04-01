@@ -126,6 +126,7 @@ ru:
       from: От
       email: Эл. почта
       category: Категория
+      private: ", Личное"
       phone: Телефон
       message: Сообщение
       closing_line: С наилучшими пожеланиями

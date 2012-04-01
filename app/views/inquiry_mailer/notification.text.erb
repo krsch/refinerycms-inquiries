@@ -6,7 +6,7 @@
 
 <%=raw t('.from') %>: <%= @inquiry.name %>
 <%=raw t('.email') %>: <%= @inquiry.email %>
-<%=raw t('.category')%>: <%= @inquiry.inquiry_category.name %>
+<%=raw t('.category')%>: <%= @inquiry.inquiry_category.name %><%= t('.private') if @inquiry.isprivate %>
 <%=raw t('.message') %>:
 <%=raw @inquiry.message %>
 
