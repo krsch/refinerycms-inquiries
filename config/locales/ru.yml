@@ -125,6 +125,7 @@ ru:
       inquiry_ends: --- конец запроса ---
       from: От
       email: Эл. почта
+      category: Категория
       phone: Телефон
       message: Сообщение
       closing_line: С наилучшими пожеланиями
