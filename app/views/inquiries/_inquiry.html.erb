@@ -6,7 +6,7 @@
   </span>
   <span class='answer'>
     <strong><%= t('.answer') %></strong>
-    <span class='text'><%= strip_tags(inquiry.answer) %></span>
+    <span class='text'><%= inquiry.answer.html_safe %></span>
     <div class='from'><%= t('.answered_by', :name => inquiry.recipient, :date => l(Date.parse(inquiry.updated_at.to_s), :format => :long)) %></div>
   </span>
 </li>
